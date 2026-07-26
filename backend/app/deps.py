@@ -5,6 +5,7 @@ from typing import Generator
 from fastapi import Depends,HTTPException, status
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordBearer
+# The jose library is used for encoding and decoding JSON Web Tokens (JWTs), which are commonly used for authentication and authorization in web applications.
 from jose import JWTError, jwt
 
 from app.core.config import settings

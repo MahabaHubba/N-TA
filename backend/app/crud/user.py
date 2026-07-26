@@ -15,7 +15,9 @@ def create_user(db: Session, email: str, password: str):
     db_user = models.User(email=email, hashed_password=hashed_password)
     # add the new user tot he database, commit the transaction, refresh the user object to get the updated data from the database, and return the user object
     db.add(db_user)
+    # commit the transaction to save the new user to the database, refresh the user object to get the updated data from the database, and return the user object
     db.commit()
+    # refresh the user object to get the updated data from the database, and return the user object
     db.refresh(db_user)
     return db_user
 

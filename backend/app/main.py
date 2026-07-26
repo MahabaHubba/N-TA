@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 # Import routers
 from app.routers import users, notifications
 
+# The FastAPI class is used to create an instance of the FastAPI application, which serves as the main entry point for defining routes and handling requests.
 app = FastAPI(title="N-TA Backend")
 
 

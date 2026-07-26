@@ -13,11 +13,13 @@ function App() {
   const [showRegister, setShowRegister] = useState(true);
   const notifications = useNotifications(token);
 
+  // Persist auth state in localStorage
   useEffect(() => {
     if (token) localStorage.setItem("token", token);
     else localStorage.removeItem("token");
   }, [token]);
 
+  // Persist user state in localStorage
   useEffect(() => {
     if (user) localStorage.setItem("user", user);
     else localStorage.removeItem("user");

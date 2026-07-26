@@ -15,8 +15,9 @@ from app.routers.notifications import manager
 
 # APIRouter allows you to create modular route handlers that can be easily included in the main application.
 router = APIRouter(prefix="", tags=["users"])
-
+# The reason we use UserOut as the response model for the register endpoint is to ensure that we only return the relevant user information (id and email) without exposing sensitive data such as the hashed password. By using a response model, we can control the structure of the response and ensure that only the necessary information is included.
 @router.post("/register", response_model=UserOut)
+# background_tasks is used to run tasks in the background after returning a response. In this case, it is used to notify all connected clients about a new user registration.
 def register(user: UserCreate, db: Session = Depends(get_db), background_tasks: BackgroundTasks = None):
     db_user = crud_user.get_user_by_email(db, email=user.email)
     if db_user:
